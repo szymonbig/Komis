@@ -24,7 +24,7 @@ namespace Komis
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();           //obsługa ew. wyświetlenia numeru błędu 
             app.UseStaticFiles();               //obsługa plików statycznych
-            app.UseMvcWithDefaultRoute();
+            app.UseMvcWithDefaultRoute();       //obsługa przepływu
         }
     }
 }
