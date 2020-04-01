@@ -12,3 +12,14 @@ C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Komis.Assembly
 C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Komis.RazorTargetAssemblyInfo.cache
 C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Komis.dll
 C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Komis.pdb
+C:\Users\Szymon\Documents\GIT\Komis\Komis\bin\Debug\netcoreapp2.1\Komis.Views.dll
+C:\Users\Szymon\Documents\GIT\Komis\Komis\bin\Debug\netcoreapp2.1\Komis.Views.pdb
+C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Komis.TagHelpers.input.cache
+C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Komis.TagHelpers.output.cache
+C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Komis.RazorCoreGenerate.cache
+C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
+C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Komis.RazorTargetAssemblyInfo.cs
+C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Komis.Views.pdb
+C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Komis.csproj.CopyComplete
+C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
+C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.g.cshtml.cs
