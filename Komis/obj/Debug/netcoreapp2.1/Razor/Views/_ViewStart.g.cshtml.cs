@@ -13,7 +13,18 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
+#line 1 "C:\Users\Szymon\Documents\GIT\Komis\Komis\Views\_ViewImports.cshtml"
+using Komis.Models;
+
+#line default
+#line hidden
+#line 2 "C:\Users\Szymon\Documents\GIT\Komis\Komis\Views\_ViewImports.cshtml"
+using Komis.ViewModels;
+
+#line default
+#line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ce24e5fec0d883e6c5b1b13717bef72387e4c0f2", @"/Views/_ViewStart.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"87cf131c2f04e0d8aea6a8d321e7de7aa1d7937e", @"/Views/_ViewImports.cshtml")]
     public class Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998
