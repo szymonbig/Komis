@@ -22,7 +22,8 @@ namespace Komis
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddTransient<ISamochodRepository, SamochodRepository>();       //gdy ktoś zapyta o ISamochodRepository to zostanie zwórcone MockSamochodReposiotry            
+            services.AddTransient<ISamochodRepository, SamochodRepository>();       //gdy ktoś zapyta o ISamochodRepository to zostanie zwórcone MockSamochodReposiotry   
+            services.AddTransient<IOpiniaRepository, OpiniaRepository>();
             services.AddMvc();                                                          //rejestracja usuług
         }
 

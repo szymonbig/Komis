@@ -18,6 +18,25 @@ namespace Komis.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Komis.Models.Opinia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("NazwaUzytkownika");
+
+                    b.Property<bool>("OczekujeOdpowiedzi");
+
+                    b.Property<string>("Wiadomosc");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Opinie");
+                });
+
             modelBuilder.Entity("Komis.Models.Samochod", b =>
                 {
                     b.Property<int>("Id")

@@ -24,4 +24,6 @@ C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Razor\Views\Sh
 C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.g.cshtml.cs
 C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Razor\Views\Home\Szczegoly.g.cshtml.cs
 C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.g.cshtml.cs
+C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Razor\Views\Opinia\Index.g.cshtml.cs
+C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Razor\Views\Opinia\OpiniaWyslana.g.cshtml.cs
 C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Komis.csprojAssemblyReference.cache
