@@ -97,7 +97,7 @@ WriteAttributeValue("", 298, samochod.MiniaturkaUrl, 298, 23, false);
             WriteLiteral("</h3>\r\n                <h3>\r\n                    ");
             EndContext();
             BeginContext(483, 95, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fbefb1d3d3e64698b9ff1fca3e3eb70b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2b51b0f7edb94f3ba14d7ddc824786f2", async() => {
                 BeginContext(560, 14, false);
 #line 17 "C:\Users\Szymon\Documents\GIT\Komis\Komis\Views\Home\Index.cshtml"
                                                                                            Write(samochod.Marka);

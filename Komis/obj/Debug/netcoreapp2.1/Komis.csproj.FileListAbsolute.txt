@@ -27,3 +27,5 @@ C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Razor\Views\_V
 C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Razor\Views\Opinia\Index.g.cshtml.cs
 C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Razor\Views\Opinia\OpiniaWyslana.g.cshtml.cs
 C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Komis.csprojAssemblyReference.cache
+C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Razor\Views\Account\Login.g.cshtml.cs
+C:\Users\Szymon\Documents\GIT\Komis\Komis\obj\Debug\netcoreapp2.1\Razor\Views\Account\Register.g.cshtml.cs

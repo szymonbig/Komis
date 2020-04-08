@@ -1,6 +1,7 @@
 ﻿using Komis.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +23,7 @@ namespace Komis
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
             services.AddTransient<ISamochodRepository, SamochodRepository>();       //gdy ktoś zapyta o ISamochodRepository to zostanie zwórcone MockSamochodReposiotry   
             services.AddTransient<IOpiniaRepository, OpiniaRepository>();
             services.AddMvc();                                                          //rejestracja usuług
@@ -33,6 +35,7 @@ namespace Komis
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();           //obsługa ew. wyświetlenia numeru błędu 
             app.UseStaticFiles();               //obsługa plików statycznych
+            app.UseAuthentication();            //uwierzytelnianie 
             //app.UseMvcWithDefaultRoute();       //obsługa "przepływu"
             app.UseMvc(routes =>
             {
