@@ -1,108 +1,43 @@
-﻿@model IEnumerable<Komis.Models.Samochod>
+﻿@model IEnumerable<Samochod>
 
-@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h2>Index</h2>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<table class="table" style="background-color:azure">
     <thead>
         <tr>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Rok</th>
+            <th>Przebieg</th>
+            <th>Pojemnosc</th>
+            <th>Paliwo</th>
+            <th>Moc</th>
+            <th>Opis</th>
+            <th>Cena</th>
+            <th>Miniaturka</th>
             <th>
-                @Html.DisplayNameFor(model => model.Marka)
+                <a asp-action="Create" class="btn btn-danger btn-sm">Dodaj nowy</a>
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Model)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RokProdukcji)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Przebieg)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Pojemnosc)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RodzajPaliwa)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Moc)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Opis)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cena)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ZdjecieUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MiniaturkaUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.JestSamochodemTygodnia)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.JestWCentrali)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Marka)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RokProdukcji)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Przebieg)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pojemnosc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RodzajPaliwa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Moc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Opis)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cena)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ZdjecieUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MiniaturkaUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.JestSamochodemTygodnia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.JestWCentrali)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Marka)</td>
+                <td>@Html.DisplayFor(modelItem => item.Model)</td>
+                <td>@Html.DisplayFor(modelItem => item.RokProdukcji)</td>
+                <td>@Html.DisplayFor(modelItem => item.Przebieg)</td>
+                <td>@Html.DisplayFor(modelItem => item.Pojemnosc)</td>
+                <td>@Html.DisplayFor(modelItem => item.RodzajPaliwa)</td>
+                <td>@Html.DisplayFor(modelItem => item.Moc)</td>
+                <td>@Html.DisplayFor(modelItem => item.Opis)</td>
+                <td>@Html.DisplayFor(modelItem => item.Cena)</td>
+                <td><img src="@item.MiniaturkaUrl" height="100" width="100" /></td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success btn-sm" style="margin-bottom:3px">Szczegóły</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm" style="margin-bottom:3px">Edytuj</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-success btn-sm" style="margin-bottom:3px">Usuń</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -1,18 +1,26 @@
-﻿@model Komis.Models.Samochod
+﻿@model Samochod
 
-@{
-    ViewData["Title"] = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h2>Create</h2>
-
-<h4>Samochod</h4>
+<h2>Dodaj Samochod</h2>
 <hr />
+
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form method="post" enctype="multipart/form-data" asp-action="UploadFile">
+            <div class="form-group">
+                <input type="hidden" asp-for="Id" />
+                <label class="control-label">Zdjęcie samochodu</label><br />
+                <img src="@ViewBag.ImgPath" height="300" width="300" /><br />
+                <input type="file" name="file" style="margin-top:10px" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Załaduj zdjęcie" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-md-4">
             <div class="form-group">
                 <label asp-for="Marka" class="control-label"></label>
                 <input asp-for="Marka" class="form-control" />
@@ -24,7 +32,7 @@
                 <span asp-validation-for="Model" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="RokProdukcji" class="control-label"></label>
+                <label asp-for="RokProdukcji" class="control-label">Rok Produkcji</label>
                 <input asp-for="RokProdukcji" class="form-control" />
                 <span asp-validation-for="RokProdukcji" class="text-danger"></span>
             </div>
@@ -38,8 +46,10 @@
                 <input asp-for="Pojemnosc" class="form-control" />
                 <span asp-validation-for="Pojemnosc" class="text-danger"></span>
             </div>
+        </div>
+        <div class="col-md-4">
             <div class="form-group">
-                <label asp-for="RodzajPaliwa" class="control-label"></label>
+                <label asp-for="RodzajPaliwa" class="control-label">Rodzaj Paliwa</label>
                 <input asp-for="RodzajPaliwa" class="form-control" />
                 <span asp-validation-for="RodzajPaliwa" class="text-danger"></span>
             </div>
@@ -49,47 +59,35 @@
                 <span asp-validation-for="Moc" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Opis" class="control-label"></label>
-                <input asp-for="Opis" class="form-control" />
-                <span asp-validation-for="Opis" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Cena" class="control-label"></label>
                 <input asp-for="Cena" class="form-control" />
                 <span asp-validation-for="Cena" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ZdjecieUrl" class="control-label"></label>
-                <input asp-for="ZdjecieUrl" class="form-control" />
-                <span asp-validation-for="ZdjecieUrl" class="text-danger"></span>
+                <label asp-for="Opis" class="control-label"></label>
+                <input asp-for="Opis" class="form-control info" />
+                <span asp-validation-for="Opis" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="MiniaturkaUrl" class="control-label"></label>
-                <input asp-for="MiniaturkaUrl" class="form-control" />
-                <span asp-validation-for="MiniaturkaUrl" class="text-danger"></span>
-            </div>
+            <input type="hidden" asp-for="ZdjecieUrl" value="@ViewBag.ImgPath" />
+            <input type="hidden" asp-for="MiniaturkaUrl" value="@ViewBag.ImgPath" />
             <div class="form-group">
                 <div class="checkbox">
                     <label>
-                        <input asp-for="JestSamochodemTygodnia" /> @Html.DisplayNameFor(model => model.JestSamochodemTygodnia)
+                        <input asp-for="JestSamochodemTygodnia" /> Jest Samochodem Tygodnia
                     </label>
                 </div>
             </div>
             <div class="form-group">
                 <div class="checkbox">
                     <label>
-                        <input asp-for="JestWCentrali" /> @Html.DisplayNameFor(model => model.JestWCentrali)
+                        <input asp-for="JestWCentrali" /> Jest W Centrali
                     </label>
                 </div>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Dodaj samochód" class="btn btn-success" style="margin-top:30px" />
+                <a asp-action="Index" class="btn btn-danger pull-right" style="margin-top:30px">Powrót</a>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-

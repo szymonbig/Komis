@@ -1,152 +1,142 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Komis.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Komis.Models;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
+using System;
+
+// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Komis.Controllers
 {
     public class SamochodController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly ISamochodRepository _samochodRepository;
+        private IHostingEnvironment _env;
 
-        public SamochodController(AppDbContext context)
+        public SamochodController(ISamochodRepository samochodRepository, IHostingEnvironment env)
         {
-            _context = context;
+            _samochodRepository = samochodRepository;
+            _env = env;
+        }
+      
+        public IActionResult Index()
+        {
+            return View(_samochodRepository.PobierzWszystkieSamochody());
         }
 
-        // GET: Samochod
-        public async Task<IActionResult> Index()
+        public IActionResult Details(int id)
         {
-            return View(await _context.Samochody.ToListAsync());
-        }
-
-        // GET: Samochod/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
+            var samoochod = _samochodRepository.PobierzSamochodOId(id);
+            if (samoochod == null)
                 return NotFound();
-            }
 
-            var samochod = await _context.Samochody
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (samochod == null)
-            {
-                return NotFound();
-            }
-
-            return View(samochod);
+            return View(samoochod);
         }
 
-        // GET: Samochod/Create
-        public IActionResult Create()
+        public IActionResult Create(string FileName)
         {
+            if (!string.IsNullOrEmpty(FileName))
+                ViewBag.ImgPath = "/Images/" + FileName;
+
             return View();
         }
 
-        // POST: Samochod/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Marka,Model,RokProdukcji,Przebieg,Pojemnosc,RodzajPaliwa,Moc,Opis,Cena,ZdjecieUrl,MiniaturkaUrl,JestSamochodemTygodnia,JestWCentrali")] Samochod samochod)
+        public IActionResult Create(Samochod samochod)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(samochod);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                _samochodRepository.DodajSamochod(samochod);
+                return RedirectToAction("Index");
             }
+
             return View(samochod);
         }
 
-        // GET: Samochod/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+
+        public IActionResult Edit(int id, string FileName)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var samochod = _samochodRepository.PobierzSamochodOId(id);
 
-            var samochod = await _context.Samochody.FindAsync(id);
             if (samochod == null)
-            {
                 return NotFound();
-            }
+
+            if (!string.IsNullOrEmpty(FileName))
+                ViewBag.ImgPath = "/Images/" + FileName;
+            else
+                ViewBag.ImgPath = samochod.ZdjecieUrl;
+
             return View(samochod);
         }
 
-        // POST: Samochod/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Marka,Model,RokProdukcji,Przebieg,Pojemnosc,RodzajPaliwa,Moc,Opis,Cena,ZdjecieUrl,MiniaturkaUrl,JestSamochodemTygodnia,JestWCentrali")] Samochod samochod)
+        public IActionResult Edit(Samochod samochod)
         {
-            if (id != samochod.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(samochod);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!SamochodExists(samochod.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                _samochodRepository.EdytujSamochod(samochod);
+                return RedirectToAction("Index");
             }
+
             return View(samochod);
         }
 
-        // GET: Samochod/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+
+        public IActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var samochod = _samochodRepository.PobierzSamochodOId(id);
 
-            var samochod = await _context.Samochody
-                .FirstOrDefaultAsync(m => m.Id == id);
             if (samochod == null)
-            {
                 return NotFound();
-            }
 
             return View(samochod);
         }
 
-        // POST: Samochod/Delete/5
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteComfirmed(int id, string ZdjecieUrl)
         {
-            var samochod = await _context.Samochody.FindAsync(id);
-            _context.Samochody.Remove(samochod);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            var samochod = _samochodRepository.PobierzSamochodOId(id);
+            _samochodRepository.UsunSamochod(samochod);
+            
+            //usuwanie pliku
+            if (ZdjecieUrl != null)
+            {
+                var webRoot = _env.WebRootPath;
+                var filePath = Path.Combine(webRoot.ToString() + ZdjecieUrl);
+                System.IO.File.Delete(filePath);
+            }
+                
+
+           // return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));             //to jest to samo co wyżej 
         }
 
-        private bool SamochodExists(int id)
+
+        [HttpPost("UploadFile")]
+        public async Task<IActionResult> UploadFile(IFormCollection form)
         {
-            return _context.Samochody.Any(e => e.Id == id);
+            var webRoot = _env.WebRootPath;
+            var filePath = Path.Combine(webRoot.ToString() + "\\images\\" + form.Files[0].FileName);
+
+            if(form.Files[0].FileName.Length > 0)
+            {
+                using(var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await form.Files[0].CopyToAsync(stream);
+                }
+            }
+
+            if (Convert.ToString(form["Id"]) == string.Empty || Convert.ToString(form["Id"]) == "0")
+                return RedirectToAction(nameof(Create), new { FileName = Convert.ToString(form.Files[0].FileName) });
+
+            return RedirectToAction(nameof(Edit), new { FileName = Convert.ToString(form.Files[0].FileName), id = Convert.ToString(form["Id"]) });
         }
     }
 }

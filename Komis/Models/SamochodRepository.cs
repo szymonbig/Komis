@@ -11,7 +11,7 @@ namespace Komis.Models
         public SamochodRepository(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
-        }
+        }        
 
         public Samochod PobierzSamochodOId(int samochodId)
         {
@@ -21,6 +21,24 @@ namespace Komis.Models
         public IEnumerable<Samochod> PobierzWszystkieSamochody()
         {
             return _appDbContext.Samochody;
+        }
+
+        public void DodajSamochod(Samochod samochod)
+        {
+            _appDbContext.Samochody.Add(samochod);
+            _appDbContext.SaveChanges();
+        }
+
+        public void EdytujSamochod(Samochod samochod)
+        {
+            _appDbContext.Samochody.Update(samochod);
+            _appDbContext.SaveChanges();
+        }
+
+        public void UsunSamochod(Samochod samochod)
+        {
+            _appDbContext.Samochody.Remove(samochod);
+            _appDbContext.SaveChanges();
         }
     }
 }
